@@ -47,6 +47,30 @@ void DelSame(SqList &L) {
   L.length = k;
 }
 
+// void ReverseList(SqList &L) {
+//   for (int i = 0; i < L.length; i++) {
+//     for (int j = 0; j + 1 < L.length - i; j++) {
+//       int t = L.data[j];
+//       L.data[j] = L.data[j + 1];
+//       L.data[j + 1] = t;
+//     }
+//   }
+// }
+
+// bool DelST(SqList &L, ElemType s, ElemType t) {
+//   if (s >= t || L.length == 0) {
+//     return false;
+//   }
+//   int k = 0;
+//   for (int i = 0; i < L.length; i++) {
+//     if (L.data[i] < s || L.data[i] > t) {
+//       L.data[k++] = L.data[i];
+//     }
+//   }
+//   L.length = k;
+//   return true;
+// }
+
 int main() {
   SqList list;
   InitList(list);

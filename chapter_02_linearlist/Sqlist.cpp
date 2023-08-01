@@ -72,6 +72,7 @@ void PrintList(SqList L) {
   cout << endl;
 }
 
+//静态分配初始化顺序表
 void InitList(SqList &L) {
   L.length = 10;
   for (int i = 0; i < L.length; i++) {
@@ -79,6 +80,7 @@ void InitList(SqList &L) {
   }
 }
 
+//动态分配定义顺序表
 void InitList2(SqList2 &L) {
   L.length = 10;
   L.data = new ElemType[InitSize];
@@ -87,29 +89,6 @@ void InitList2(SqList2 &L) {
   }
 }
 
-// void ReverseList(SqList &L) {
-//   for (int i = 0; i < L.length; i++) {
-//     for (int j = 0; j + 1 < L.length - i; j++) {
-//       int t = L.data[j];
-//       L.data[j] = L.data[j + 1];
-//       L.data[j + 1] = t;
-//     }
-//   }
-// }
-
-// bool DelST(SqList &L, ElemType s, ElemType t) {
-//   if (s >= t || L.length == 0) {
-//     return false;
-//   }
-//   int k = 0;
-//   for (int i = 0; i < L.length; i++) {
-//     if (L.data[i] < s || L.data[i] > t) {
-//       L.data[k++] = L.data[i];
-//     }
-//   }
-//   L.length = k;
-//   return true;
-// }
 
 int main() {
   SqList list;
@@ -122,6 +101,5 @@ int main() {
 
   SqList2 list2;
   InitList2(list2);
-  cout << list2.data[0] << endl;
   return 0;
 }
