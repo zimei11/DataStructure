@@ -20,7 +20,7 @@ typedef struct LNode{
   struct LNode *next;
 }LNode,*LinkList;
 
-//初始化
+//初始化（带头结点）
 bool InitList(LinkList &L){
   L=new LNode;//分配一个头结点
   if(L==NULL)
@@ -29,7 +29,7 @@ bool InitList(LinkList &L){
   return true;
 }
 
-//判空
+//判空（带头结点）
 bool IsEmpty(LinkList L){
   if(L->next==NULL)
     return true;
@@ -112,7 +112,7 @@ bool DeleteNode(LNode *p){
   return true;
 }
 
-//打印
+//打印（带头结点）
 void PrintList(LinkList L){
   L=L->next;
   while(L!=NULL){
