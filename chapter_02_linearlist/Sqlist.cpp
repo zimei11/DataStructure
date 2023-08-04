@@ -18,17 +18,20 @@ typedef int ElemType;
 
 using namespace std;
 
+//定义顺序表 静态分配
 typedef struct {
   ElemType data[MaxSize];
   int length;
 } SqList;
 
+//定义顺序表 动态分配
 typedef struct {
   ElemType *data;
   int length;
   //  int MaxSize;
 } SqList2;
 
+//按位序插入
 bool ListInsert(SqList &L, int i, ElemType e) {
   if (i < 1 || i > L.length) {
     return false;
@@ -44,6 +47,7 @@ bool ListInsert(SqList &L, int i, ElemType e) {
   return true;
 }
 
+//按位序删除
 bool ListDelete(SqList &L, int i, ElemType &e) {
   if (i < 1 || i > L.length) {
     return false;
@@ -56,6 +60,7 @@ bool ListDelete(SqList &L, int i, ElemType &e) {
   return true;
 }
 
+//按元素查找
 int LocateElem(SqList L, ElemType e) {
   for (int i = 0; i < L.length; i++) {
     if (L.data[i] == e) {
@@ -65,6 +70,7 @@ int LocateElem(SqList L, ElemType e) {
   return 0;
 }
 
+//打印
 void PrintList(SqList L) {
   for (int i = 0; i < L.length; i++) {
     cout << L.data[i] << " ";
@@ -72,7 +78,7 @@ void PrintList(SqList L) {
   cout << endl;
 }
 
-//静态分配初始化顺序表
+//初始化顺序表 静态分配
 void InitList(SqList &L) {
   L.length = 10;
   for (int i = 0; i < L.length; i++) {
@@ -80,7 +86,7 @@ void InitList(SqList &L) {
   }
 }
 
-//动态分配定义顺序表
+//初始化顺序表 动态分配
 void InitList2(SqList2 &L) {
   L.length = 10;
   L.data = new ElemType[InitSize];
@@ -91,15 +97,17 @@ void InitList2(SqList2 &L) {
 
 
 int main() {
-  SqList list;
-  InitList(list);
-  ListInsert(list, 2, 8);
+  SqList L;
+  InitList(L);
+  ListInsert(L, 2, 8);
+  cout<<"Insert element 8 successfully at position 2"<<endl;
+  PrintList(L);
   int deleteElem;
-  ListDelete(list, 2, deleteElem);
-  cout << "elem 2:" << LocateElem(list, 2) << endl;
-  PrintList(list);
+  ListDelete(L, 2, deleteElem);
+  cout << "The location of the deleted element 2: " << LocateElem(L, 2) << endl;
+  PrintList(L);
 
-  SqList2 list2;
-  InitList2(list2);
+  SqList2 L2;
+  InitList2(L2);
   return 0;
 }

@@ -10,6 +10,7 @@
 #include<iostream>
 #include<cstring>
 #include<algorithm>
+#include<cstdio>
 
 #define ElemType int
 
@@ -34,6 +35,25 @@ bool IsEmpty(LinkList L){
   if(L->next==NULL)
     return true;
   return false;
+}
+
+//按位查找
+LNode * GetElem(LinkList L,int i){
+  if(i<0) return NULL;//i=0会返回头结点
+  LNode *p=L;
+  for(int j=0;j<i&&p!=NULL;j++){
+    p=p->next;
+  }
+  return p;
+}
+
+//按值查找
+LNode * LocateElem(LinkList L,ElemType e){
+  LNode *p=L->next;
+  while(p!=NULL&&p->data!=e){
+    p=p->next;
+  }
+  return p;
 }
 
 //前插法，p节点之前插入e
@@ -68,10 +88,12 @@ bool InsertNextNode(LNode *p,ElemType e){
 bool ListInsert(LinkList &L,int i,ElemType e){
   if(i<1)
     return false;
-  LNode *p=L;
-  for(int j=0;j<i-1&&p!=NULL;j++){
-    p=p->next;
-  }
+  LNode *p= GetElem(L,i-1);
+//  与上面 LNode *p= GetElem(L,i-1);等价
+//  LNode *p=L;
+//  for(int j=0;j<i-1&&p!=NULL;j++){
+//    p=p->next;
+//  }
 
   return InsertNextNode(p,e);
 //  与上面 return InsertNextNode(p,e) 等价
@@ -112,6 +134,56 @@ bool DeleteNode(LNode *p){
   return true;
 }
 
+//求表长
+int Length(LinkList L){
+  int len=0;
+  LNode *p=L->next;
+  while(p!=NULL){
+     p=p->next;
+     len++;
+  }
+  return len;
+}
+
+//单链表的建立 头插法
+void ListHeadInsert(LinkList &L){
+  int x;
+  LNode *s;
+
+  L=new LNode ;
+  L->next=NULL;
+
+//  while(scanf("%d",&x)!=EOF){//end of file ctrl+z结束
+  cin>>x;
+  while(x!=999){
+     s=new LNode ;
+     s->data=x;
+     s->next=L->next;
+     L->next=s;
+     cin>>x;
+  }
+}
+
+//单链表的建立 尾插法
+void ListTailInsert(LinkList &L){
+  int x;
+  L=new LNode ;
+  L->next=NULL;
+
+  LNode *s,*p=L;
+
+//  while(scanf("%d",&x)!=EOF) { // end of file ctrl+z结束
+  cin>>x;
+  while (x!=999){
+     s = new LNode;
+     s->data=x;
+     p->next=s;
+     p=s;
+     cin>>x;
+  }
+  p->next=NULL;
+}
+
 //打印（带头结点）
 void PrintList(LinkList L){
   L=L->next;
@@ -136,6 +208,16 @@ int main(){
   PrintList(L);
   DeleteNode(L->next);
   cout<<"delete head"<<endl;
+  PrintList(L);
+
+  cout<<"Please enter the elements "
+          "of the head insertion method:(end with 999)"<<endl;
+  ListHeadInsert(L);
+  PrintList(L);
+
+  cout<<"Please enter the elements "
+          "of the tail insertion method:(end with 999)"<<endl;
+  ListTailInsert(L);
   PrintList(L);
   return 0;
 }
