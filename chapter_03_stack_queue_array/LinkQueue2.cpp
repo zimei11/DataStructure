@@ -1,11 +1,12 @@
 /**
  ***************************************************
- * @file           : LinkQueue.cpp
+ * @file           : LinkQueue2.cpp
  * @author         : zi_mei
- * @brief          : 队列（链式，带头结点）
- * @date           : 2023/8/15
+ * @brief          : 队列（链式，不带头结点）
+ * @date           : 2023/8/17
  ***************************************************
  */
+
 #include<iostream>
 #include<cstdio>
 #include<cstring>
@@ -25,12 +26,12 @@ typedef struct LinkQueue{
 }LinkQueue;
 
 void InitQueue(LinkQueue &Q){
-  Q.front=Q.rear=new LinkNode ;
-  Q.front->next=NULL;//此时头结点与尾节点指向头结点，让头结点指向NULL
+  Q.rear=NULL;
+  Q.front=NULL;
 }
 
 bool IsEmpty(LinkQueue Q){
-  if(Q.front==Q.rear)
+  if(Q.front==NULL)
     return true;
   return false;
 }
@@ -39,18 +40,25 @@ void EnQueue(LinkQueue &Q,ElemType x){
   LinkNode *s=new LinkNode ;
   s->data=x;
   s->next=NULL;
-  Q.rear->next=s;
-  Q.rear=s;
+  if(IsEmpty(Q)){
+    Q.front=s;
+    Q.rear=s;
+  }
+  else {
+    Q.rear->next = s;
+    Q.rear = s;
+  }
 }
 
 bool DeQueue(LinkQueue &Q,ElemType &x){
   if(IsEmpty(Q))
     return false;
-  LinkNode *p =Q.front->next;
-  x= p->data;
-  Q.front->next= p->next;
+  LinkNode *p=Q.front;
+  x=p->data;
+  Q.front=p->next;
   if(Q.rear==p){
-    Q.rear=Q.front;
+    Q.front=NULL;
+    Q.rear=NULL;
   }
   delete p;
   return true;
@@ -59,15 +67,5 @@ bool DeQueue(LinkQueue &Q,ElemType &x){
 int main(){
   LinkQueue Q;
   InitQueue(Q);
-  if (IsEmpty) cout<<"YES"<<endl;
-
-  int num_in = 0, x = 0;
-  cout<<"Enter the total number of elements to be queued:"<<endl;
-  cin>>num_in;
-  for (int i = 0; i < num_in; i ++ ){
-    cout<<"Input element"<<endl;
-    cin>>x;
-    EnQueue(Q, x);
-  }
   return 0;
 }
