@@ -1,6 +1,6 @@
 /**
  ***************************************************
- * @file           : Sqlist.cpp
+ * @file           : sqlist.cpp
  * @author         : zi_mei
  * @brief          : 顺序表模板
  * @date           : 2023/7/18
