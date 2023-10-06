@@ -30,7 +30,7 @@ void visit(ThreadNode *q){
   }
   if(pre!=NULL&&pre->rchild==NULL){
     pre->rchild=q;
-    pre->rchild=1;
+    pre->rtag=1;
   }
   pre=q;
 }
