@@ -21,3 +21,6 @@ add_executable(BinaryTree chapter_05_trees_and_binary_trees/binary_tree/BinaryTr
 add_executable(BinaryTree2 chapter_05_trees_and_binary_trees/binary_tree/BinaryTree2.cpp)
 add_executable(PreInPostOrder chapter_05_trees_and_binary_trees/binary_tree/PreInPostOrder.cpp)
 add_executable(LevelOrder chapter_05_trees_and_binary_trees/binary_tree/LevelOrder.cpp)
+add_executable(InThread chapter_05_trees_and_binary_trees/thread_tree/InThread.cpp)
+add_executable(PostThread chapter_05_trees_and_binary_trees/thread_tree/PostThread.cpp)
+add_executable(PreThread chapter_05_trees_and_binary_trees/thread_tree/PreThread.cpp)
