@@ -24,3 +24,4 @@ add_executable(LevelOrder chapter_05_trees_and_binary_trees/binary_tree/LevelOrd
 add_executable(InThread chapter_05_trees_and_binary_trees/thread_tree/InThread.cpp)
 add_executable(PostThread chapter_05_trees_and_binary_trees/thread_tree/PostThread.cpp)
 add_executable(PreThread chapter_05_trees_and_binary_trees/thread_tree/PreThread.cpp)
+add_executable(MGraph chapter_06_graph/MGraph.cpp)
